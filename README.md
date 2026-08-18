@@ -37,8 +37,6 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 4. Dataset Setup
-
 Download the dataset from Kaggle and place it in the data/ folder of the project directory.
 
 ---
