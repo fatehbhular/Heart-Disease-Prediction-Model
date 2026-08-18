@@ -28,21 +28,13 @@ We are using the **Patient Dataset for Multi-Disease Prediction** from Kaggle:
 
 ## Project Setup for Collaborators
 
-### 1. Clone the Repository
-```bash
+**Setting up for Collaborators**
+```
 git clone <repository-url>
 cd <project-folder>
-```
-### 2. Create and Avtivate a Virtual Environment
-```bash
 python3 -m venv venv
 source venv/bin/activate
-```
-
-### 3. Install Required Dependencies
-```bash
-pip install pandas numpy jupyter scikit-learn matplotlib
-pip freeze > [requirements.txt]
+pip install -r requirements.txt
 ```
 
 ### 4. Dataset Setup
