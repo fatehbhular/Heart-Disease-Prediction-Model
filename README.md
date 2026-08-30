@@ -16,29 +16,16 @@ The raw dataset contains 280,985 records and 39 columns.
 
 ```text
 Data-Engineering-and-AI-Project/
-|-- data/
-|   |-- patient_data.csv
-|   |-- patient_data_cleaned.csv
-|   `-- etl.db
-|-- notebooks/
-|   |-- Task_2_Data_Acquisition.ipynb
-|   |-- Task_3_Data Cleansing and Transformation.ipynb
-|   |-- Task_4_1_Exploratory_Data_Analysis.ipynb
-|   `-- Task_4_2_Exploratory_Data_Analysis.ipynb
-|-- Data Engineering and Machine Learning Pipeline Project.pdf
-|-- requirements.txt
-`-- README.md
-```
-
-The cleaned dataset is stored in both `data/patient_data_cleaned.csv` and the
-`clean` table in `data/etl.db`. The exploratory analysis notebooks continue to
-load the cleaned CSV file.
-
-## Setup
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\activate
-pip install -r requirements.txt
-jupyter notebook
-```
+│
+├── data/
+│   ├── patient_data.csv
+│   ├── patient_data_cleaned.csv
+│   └── etl.db
+│
+├── notebooks/
+│   ├── Task_2_Data_Acquisition.ipynb
+│   ├── Task_3_Data Cleansing and Transformation.ipynb
+│   ├── Task_4_1_Exploratory_Data_Analysis.ipynb
+│   └── Task_4_2_Exploratory_Data_Analysis.ipynb
+│
+└── README.md
