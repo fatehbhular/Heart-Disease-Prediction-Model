@@ -1,0 +1,7 @@
+Change tested,Metric,Before,After,t-statistic,p-value,Result
+Add undersampling,Recall,0.00059422750424447,0.050169779286926966,-3.223486947279448,0.010430933067979849,Significant increase
+Add undersampling,PR-AUC,0.0375544119676798,0.10160124471954331,-11.19625866727014,1.3866576650647002e-06,Significant increase
+Add undersampling,Balanced accuracy,0.5002696225951111,0.5228526076941572,-3.247878466727531,0.010031363454809808,Significant increase
+Increase population size + training iterations,Recall,0.050169779286926966,0.009337860780984659,2.542049595070553,0.03160432301101177,Significant decrease
+Increase population size + training iterations,PR-AUC,0.10160124471954331,0.17834518607424238,-20.302491896441904,7.953271943784917e-09,Significant increase
+Increase population size + training iterations,Balanced accuracy,0.5228526076941572,0.5043573639443659,2.5420798338592814,0.03160275504615591,Significant decrease
