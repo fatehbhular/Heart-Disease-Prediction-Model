@@ -1,85 +1,85 @@
-# Multi-Disease Prediction — ENGE707
+# ENGE707 Data Engineering and Machine Learning Project
 
-This project investigates whether patient demographic, lifestyle, and clinical information can predict the presence of heart disease.
+This repository contains our Phase I and Phase II work on predicting heart disease from patient demographic, lifestyle, and clinical data.
 
-The binary prediction target is `heart_disease_target`:
+The target column is `heart_disease_target`, where `0` means no heart disease and `1` means heart disease.
 
-- `0` — no heart disease
-- `1` — heart disease
+## What is included
 
-## Dataset
+- `notebooks Phase 1/` contains the data acquisition, cleaning, and exploratory analysis from Phase I.
+- `notebooks Phase 2/` contains the eLCS experiments, preprocessing, model comparisons, statistical testing, and rule analysis from Phase II.
+- `data/` contains the raw, cleaned, and feature-engineered datasets.
+- `outputs/` contains the saved experiment results and report figures.
+- `external/scikit-eLCS-master/` is the supplied scikit-eLCS 1.2.4 implementation used by the notebooks.
+- The Phase I and Phase II reports are stored in the project root.
 
-**Dataset:** 281K Patient Dataset for Multi-Disease Prediction  
-**Source:** Kaggle  
-**Link:** https://www.kaggle.com/datasets/danishjmeo/281k-patient-dataset-for-multi-disease-prediction
+The main submission report is [Data Engineering and Machine Learning Pipeline Project Phase II.pdf](Data%20Engineering%20and%20Machine%20Learning%20Pipeline%20Project%20Phase%20II.pdf).
 
-The dataset combines patient information from diabetes, heart-disease, and hypertension datasets.
+## Data
 
-### Raw dataset
+The original data comes from the [281K Patient Dataset for Multi-Disease Prediction](https://www.kaggle.com/datasets/danishjmeo/281k-patient-dataset-for-multi-disease-prediction).
 
-The raw dataset is stored at `data/patient_data.csv` and contains:
+The repository includes both the cleaned dataset and the feature-engineered datasets needed for the Phase II experiments:
 
-- 280,985 records
-- 39 columns
-- 2,284 exact duplicate records
-- Approximately 2.1% positive heart-disease cases
-- No missing values
+- `data/patient_data.csv` - original patient data
+- `data/patient_data_cleaned.csv` - cleaned Phase I data
+- `data/X_train_preprocessed_full.csv` - full preprocessed training features
+- `data/y_train_preprocessed_full.csv` - full training labels
+- `data/X_train_preprocessed_undersampled.csv` - undersampled training features
+- `data/y_train_preprocessed_undersampled.csv` - undersampled training labels
+- `data/X_test_preprocessed.csv` - preprocessed test features
+- `data/y_test_preprocessed.csv` - test labels
 
-### Cleaned Phase I dataset
+To reproduce the feature-engineered files, start with `patient_data_cleaned.csv` and run:
 
-The cleaned dataset is stored at `data/patient_data_cleaned.csv` and contains:
+`notebooks Phase 2/Task_3_Data Cleansing and Transformation.ipynb`
 
-- 278,701 records
-- 40 columns
-- 272,810 class-0 records
-- 5,891 class-1 records
-- No exact duplicate records
-- No missing values
+This notebook creates the full training set, undersampled training set, and unchanged test set used by the later notebooks. To reproduce the cleaned dataset from the raw data, run the Phase I notebooks in order.
 
-The additional `heart_disease_target` column was created from `sublabel`. Values containing `HT` represent heart disease and are mapped to class 1; all other values are mapped to class 0.
+## Setup
 
-## Project structure
+Python 3.11 or newer is recommended.
 
-```text
-Multi_Disease_Prediction_ENGE707/
-├── data/
-│   ├── patient_data.csv
-│   ├── patient_data_cleaned.csv
-│   ├── X_train_preprocessed_full.csv
-│   ├── y_train_preprocessed_full.csv
-│   ├── X_train_preprocessed_undersampled.csv
-│   ├── y_train_preprocessed_undersampled.csv
-│   ├── X_test_preprocessed.csv
-│   └── y_test_preprocessed.csv
-├── notebooks/
-│   ├── Task_2_Data_Acquisition.ipynb
-│   ├── Task_3_Data Cleansing and Transformation.ipynb
-│   ├── Task_4_1_Exploratory_Data_Analysis.ipynb
-│   └── Task_4_2_Exploratory_Data_Analysis.ipynb
-├── notebooks-phase2/
-│   ├── Task_2_Original_eLCS_Baseline.ipynb
-│   ├── Task_3_Data Cleansing and Transformation.ipynb
-│   └── Task_4_Improved_eLCS_System.ipynb
-├── external/
-│   └── scikit-eLCS-master/
-├── outputs/
-├── requirements.txt
-└── README.md
+On Windows:
+
+```powershell
+py -3.11 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python -m ipykernel install --user --name enge707-phase2 --display-name "Python (ENGE707 Phase II)"
+jupyter lab
 ```
 
-## Notebook execution order
+On macOS or Linux, create and activate the environment with:
 
-### Phase I
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
 
-1. `notebooks/Task_2_Data_Acquisition.ipynb`
-2. `notebooks/Task_3_Data Cleansing and Transformation.ipynb`
-3. `notebooks/Task_4_1_Exploratory_Data_Analysis.ipynb`
-4. `notebooks/Task_4_2_Exploratory_Data_Analysis.ipynb`
+Then run the remaining `pip` and Jupyter commands shown above. Open the notebooks using the `Python (ENGE707 Phase II)` kernel.
 
-### Phase II
+## Notebook order
 
-1. `notebooks-phase2/Task_2_Original_eLCS_Baseline.ipynb`
-2. `notebooks-phase2/Task_3_Data Cleansing and Transformation.ipynb`
-3. `notebooks-phase2/Task_4_Improved_eLCS_System.ipynb`
+Phase I:
 
-Task 2 establishes the original raw-data eLCS baseline. Task 3 preprocesses the cleaned dataset and creates the full and undersampled training datasets. Task 4 compares the original preprocessed eLCS, undersampling-only eLCS, and final improved eLCS.
+1. `notebooks Phase 1/Task_2_Data_Acquisition.ipynb`
+2. `notebooks Phase 1/Task_3_Data Cleansing and Transformation.ipynb`
+3. `notebooks Phase 1/Task_4_1_Exploratory_Data_Analysis.ipynb`
+4. `notebooks Phase 1/Task_4_2_Exploratory_Data_Analysis.ipynb`
+
+Phase II:
+
+1. `notebooks Phase 2/Task_2_Original_eLCS_Baseline.ipynb`
+2. `notebooks Phase 2/Task_3_Data Cleansing and Transformation.ipynb`
+3. `notebooks Phase 2/Task_4_Improved_eLCS_System.ipynb`
+4. `notebooks Phase 2/Task_5_Statistical_Testing.ipynb`
+5. `notebooks Phase 2/Task_6_Compare_Models.ipynb`
+6. `notebooks Phase 2/Task_7_XAI_Rule_Analysis.ipynb`
+
+`notebooks Phase 2/Report_Figures.ipynb` creates the figures used in the report from the saved results.
+
+## Results
+
+The model notebooks can take a long time to run. Completed metrics, comparisons, rule exports, and figures are already available in `outputs/`, so the experiments do not need to be rerun just to review the project.
